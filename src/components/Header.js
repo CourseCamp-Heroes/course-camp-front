@@ -40,10 +40,14 @@ class Header extends React.Component {
             <img
               alt=""
               src={logo}
-              width="100"
+              width="80"
               height="80"
               className="d-inline-block align-top"
             />
+            <div className="barnd-text">
+              <p>Course</p>
+              <p>Camp</p>
+            </div>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -55,15 +59,7 @@ class Header extends React.Component {
               <Nav.Link href="/about">About</Nav.Link>
             </Nav>
             <Nav className="mr-auto">
-              {!this.props.isAuthenticated ? (
-                <LoginButton />
-              ) : (
-                <>
-                  <LogoutButton />
-                  <img src={this.props.user.picture} alt="img" />
-                  <p> Welcome {this.props.user.name}</p>
-                </>
-              )}
+              {!this.props.isAuthenticated ? <LoginButton /> : <LogoutButton />}
             </Nav>
           </Navbar.Collapse>
         </div>
