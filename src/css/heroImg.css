@@ -1,0 +1,14 @@
+.heroImg{
+    width: 100%;
+    height: 60vh;
+   
+    background: rgb(40,167,69);
+background: linear-gradient(0deg, rgba(40,167,69,1) 0%, rgba(255,255,255,1) 100%);
+}
+.header-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
