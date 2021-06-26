@@ -1,17 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Josefin+Sans:ital,wght@0,200;0,400;0,500;0,600;0,700;1,200;1,400;1,600;1,700&family=Oswald:wght@200;300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;1,900&display=swap');
-body{
-    font-family: 'Dela Gothic One', cursive;
-    font-family: 'Josefin Sans', sans-serif;
 
-  
-    
-}
 
 /* ============start sarousel ============== */
 .hero-img{
     width: 100%;
     height: 100vh;
     position: relative;
+    background-image: url('./../img/hero2.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.all-header{
+   
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-direction: column;
+    text-align: center;
+}
+.all-header h1{
+   
+    font-size: 3.5rem;
+    color: var(--main-color);
+    font-weight: 900;
+    text-align: center;
+}
+.all-header p{
+    opacity: .8;
 }
 .ovelay{
     position: absolute;
@@ -151,7 +168,7 @@ width: 100%;
 /* start our service section  */
 .our-services{
     width: 100%;
-    height: 100vh;
+    height: 100%;
     padding-top: 100px;
     padding-bottom: 50px;
 }
@@ -162,29 +179,107 @@ width: 100%;
     align-items: center;
 }
 .our-services-header h1{
-    color:rgb(79,174,109) ;
-    text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color:var(--main-color) ;
+    /* text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     font-weight: 900 !important;
-    font-size: 4rem;
+    font-size: 3rem;
 }
 .all-service{
     width: 100%;
 }
 .icons{
-    color: red;
-    font-size: 5rem;
+    color:var(--main-color);
+    font-size: 3rem;
+   
     
 }
-.service-box{
+.our-services-header p{
+    font-weight: 900;
+    color: var(--main-color);
+    font-size: 2.2rem;
+}
+/* .service-box{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     padding: 3rem;
     margin: 0 20px;
     cursor: pointer;
-}
-.service-box:hover{
+} */
+/* .service-box:hover{
     transition: all .5s ease-in-out;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     transform: scale(1.1);
+} */
+.all-service p{
+    font-weight: 900;
+    font-size: 1.2rem;
+    text-align: center;
 }
 
 /* end our service section  */
+/* start cards section  */
+.cards-section{
+    width: 100%;
+    height: 100%;
+    padding: 50px 0;
+    background-color: #f0f0f0;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background-color: var(--main-color);
+}
+.cards-section .nav-link{
+    color: #000;
+}
+.dis{
+    width: 100%;
+    height: 100%;
+    padding: 100px 0 !important;
+    
+    padding: 50px 0;
+}
+.dis h1{
+    text-align: center;
+}
+.dis p{
+    text-align: center;
+}
+.icons-udemy{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    gap: 3.5rem;
+    opacity: .6;
+}
+.succes-story{
+    margin-bottom: 9rem;
+}
+.card{
+    width: 100%;
+    height: 100%;
+    border-top: 4px solid var(--main-color);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.card h4{
+    text-align: center;
+    padding: 12px 0;
+    font-weight: normal;
+}
+.card p{
+    text-align: center;
+}
+.img-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px;
+}
+.img-card img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.footer-card{
+    background-color: #f0f0f0;
+}

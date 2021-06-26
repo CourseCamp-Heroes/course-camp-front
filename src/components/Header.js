@@ -46,10 +46,16 @@ class Header extends React.Component {
             <img
               alt=""
               src={logo}
-              width="100"
+              width="80"
               height="80"
               className="d-inline-block align-top"
             />
+            <div className='barnd-text'>
+              <p>Course</p>
+              <p>Camp</p>
+              
+            </div>
+            
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
