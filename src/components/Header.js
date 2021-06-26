@@ -1,21 +1,73 @@
 import React from "react";
-import { Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
-// import "./header.css";
+import { Navbar, Nav } from "react-bootstrap";
+//import { Link } from "react-router-dom";
+import logo from "./../img/logo2.png";
+import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton";
+import { withAuth0 } from "@auth0/auth0-react";
+import "./../css/header.css";
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      grayScroll: false,
+    };
+  }
+   grayScrollFunction = () => {
+    if(window.scrollY >100){
+      this.setState({
+        grayScroll: true,
+      });
+    }else{
+      this.setState({
+        grayScroll:false,
+      })
+    }
+   
+  };
+  componentDidMount= ()=> {
+    window.addEventListener('scroll', this.grayScrollFunction );
+}
   render() {
+   
+    const { isAuthenticated } = this.props.auth0;
     return (
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand>My Favorite Books</Navbar.Brand>
-        <Link to="/">Home</Link>
-        <Link to="/courses">Courses</Link>
-        <Link to="/blog">Blog</Link>
-        <Link to="/profile">Profile</Link>
-        <Link to="/about">About Us</Link>
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        bg="dark"
+        variant="dark"
+        fixed="top"
+        className={this.state.grayScroll ?'gray-scroll':'bg-dark'}
+      >
+        <div className="container">
+          <Navbar.Brand href="#home" className="m-auto">
+            <img
+              alt=""
+              src={logo}
+              width="100"
+              height="80"
+              className="d-inline-block align-top"
+            />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="m-auto">
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/courses">Courses</Nav.Link>
+              <Nav.Link href="/blog">Blog</Nav.Link>
+              <Nav.Link href="/profile">Profile</Nav.Link>
+              <Nav.Link href="/about">About</Nav.Link>
+            </Nav>
+            <Nav className="mr-auto">
+              {!isAuthenticated ? <LoginButton /> : <LogoutButton />}
+            </Nav>
+          </Navbar.Collapse>
+        </div>
       </Navbar>
     );
   }
 }
 
-export default Header;
+export default withAuth0(Header);
