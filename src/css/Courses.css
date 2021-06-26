@@ -1,0 +1,43 @@
+.search-container {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 9em;
+}
+
+.search-container p {
+  font-size: 1.5em;
+}
+
+.select-container {
+  display: flex;
+  gap: 20px;
+  justify-content: left;
+}
+
+.select-container select {
+  margin-bottom: 5px;
+}
+
+.cards {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 4em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* justify-content: center; */
+}
+
+.course-card {
+  width: 18rem;
+  height: 20rem;
+  border-radius: 7px;
+}
+
+.course-card:hover {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  transform: scale(1.01);
+}
