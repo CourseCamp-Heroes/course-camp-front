@@ -1,202 +1,203 @@
-
-
 /* ============start sarousel ============== */
-.hero-img{
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    background-image: url('./../img/hero2.png');
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+.hero-img {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background-image: url("./../img/hero2.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
-.all-header{
-   
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    flex-direction: column;
-    text-align: center;
+.all-header {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  flex-direction: column;
+  text-align: center;
 }
-.all-header h1{
-   
-    font-size: 3.5rem;
-    color: var(--main-color);
-    font-weight: 900;
-    text-align: center;
+.all-header h1 {
+  font-size: 5rem;
+  color: var(--main-color);
+  font-weight: 900;
+  text-align: center;
 }
-.all-header p{
-    opacity: .8;
+.all-header p {
+  opacity: 0.8;
 }
-.ovelay{
-    position: absolute;
-    width: 100%;
-    background-color:rgba(99, 58, 58, 0.3);
-    height: 100%;
-    z-index: 2;
+.ovelay {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(99, 58, 58, 0.3);
+  height: 100%;
+  z-index: 2;
 }
-.carousel-inner{
-    height: 100vh;
+.carousel-inner {
+  height: 100vh;
 }
-.background1{
-    background: rgb(79,174,109);
-    background: linear-gradient(0deg, rgba(79,174,109,1) 0%, rgba(255,255,255,1) 100%);
- width: 100%;
- height: 100%;
-    
+.background1 {
+  background: rgb(79, 174, 109);
+  background: linear-gradient(
+    0deg,
+    rgba(79, 174, 109, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  width: 100%;
+  height: 100%;
 }
-.background2{
-    background: rgb(255,255,255);
-    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(232,150,3,1) 100%);
-width: 100%;
- height: 100%;
+.background2 {
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(232, 150, 3, 1) 100%
+  );
+  width: 100%;
+  height: 100%;
+}
+.background3 {
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(79, 174, 109, 1) 100%
+  );
+  width: 100%;
+  height: 100%;
+}
+.carousel-control-next,
+.carousel-control-prev {
+  opacity: 1 !important;
+  z-index: 5;
+}
 
+.all-header {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
 }
-.background3{
-    background: rgb(255,255,255);
-background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(79,174,109,1) 100%);
-width: 100%;
- height: 100%;
+.header-img {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  z-index: 4;
+  text-align: center;
 }
-.carousel-control-next, .carousel-control-prev{
-    opacity: 1 !important;
-    z-index: 5;
+.header-img3 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  padding-top: 7rem;
 }
-
-
-.all-header{
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    
+.header-img3 img {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  z-index: 4;
+  align-items: center;
 }
-.header-img{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    position: relative;
-    z-index: 4;
-    text-align: center;
+.carousel-inner img {
+  width: 100%;
+  height: 80%;
+  position: relative;
+  z-index: 4;
 }
-.header-img3{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    position: relative;
-    z-index: 4;
-    text-align: center;
-    padding-top: 7rem;
+.header-text {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  color: #fff;
+  padding-top: 5rem;
 }
-.header-img3 img{
-    width: 100%;
-    height: 50%;
-    position: relative;
-    z-index: 4;
-    align-items: center;
-   
+.header-text h1,
+.header-text p {
+  text-align: center;
 }
-.carousel-inner img{
-    width: 100%;
-    height: 80%;
-    position: relative;
-    z-index: 4;
-    
-}
-.header-text{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 4;
-    text-align: center;
-    color: #fff;
-    padding-top: 5rem;
-
-}
-.header-text h1,.header-text p{
-    text-align: center;
-}
-.carousel-item{
-    transition: all .8s ease-in-out;
+.carousel-item {
+  transition: all 0.8s ease-in-out;
 }
 /* slid up animation */
 
 .slideUp {
-    animation-name: slideUp;
-    -webkit-animation-name: slideUp;
-    animation-duration: 3s;
-    -webkit-animation-duration: 3s;
-    visibility: visible;
-    transition: all .8s ease-in-out;
+  animation-name: slideUp;
+  -webkit-animation-name: slideUp;
+  animation-duration: 3s;
+  -webkit-animation-duration: 3s;
+  visibility: visible;
+  transition: all 0.8s ease-in-out;
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-70%);
   }
-  
-  @keyframes slideUp {
-    0% {
-      opacity: 0;
-      -webkit-transform: translateY(-70%);
-    } 
-    100% {
-      opacity: 1;
-      -webkit-transform: translateY(0%);
-    }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
   }
-  
-  @-webkit-keyframes slideUp {
-    0% {
-      opacity: 0;
-      -webkit-transform: translateY(-70%);
-    } 
-    100% {
-      opacity: 1;
-      -webkit-transform: translateY(0%);
-    }
+}
+
+@-webkit-keyframes slideUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-70%);
   }
-  
-  /* end slid up animation */
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+  }
+}
+
+/* end slid up animation */
 
 /* ============end carousel ============== */
 /* start our service section  */
-.our-services{
-    width: 100%;
-    height: 100%;
-    padding-top: 100px;
-    padding-bottom: 50px;
+.our-services {
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+  padding-bottom: 50px;
 }
-.our-services-header{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.our-services-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.our-services-header h1{
-    color:var(--main-color) ;
-    /* text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
-    font-weight: 900 !important;
-    font-size: 3rem;
+.our-services-header h1 {
+  color: var(--main-color);
+  /* text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+  font-weight: 900 !important;
+  font-size: 3rem;
 }
-.all-service{
-    width: 100%;
+.all-service {
+  width: 100%;
 }
-.icons{
-    color:var(--main-color);
-    font-size: 3rem;
-   
-    
+.icons {
+  color: var(--main-color);
+  font-size: 3rem;
 }
-.our-services-header p{
-    font-weight: 900;
-    color: var(--main-color);
-    font-size: 2.2rem;
+.our-services-header p {
+  font-weight: 900;
+  color: var(--main-color);
+  font-size: 2.2rem;
 }
 /* .service-box{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -209,77 +210,78 @@ width: 100%;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     transform: scale(1.1);
 } */
-.all-service p{
-    font-weight: 900;
-    font-size: 1.2rem;
-    text-align: center;
+.all-service p {
+  font-weight: 900;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 /* end our service section  */
 /* start cards section  */
-.cards-section{
-    width: 100%;
-    height: 100%;
-    padding: 50px 0;
-    background-color: #f0f0f0;
+.cards-section {
+  width: 100%;
+  height: 100%;
+  padding: 50px 0;
+  background-color: #f0f0f0;
 }
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
-    background-color: var(--main-color);
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: var(--main-color);
 }
-.cards-section .nav-link{
-    color: #000;
+.cards-section .nav-link {
+  color: #000;
 }
-.dis{
-    width: 100%;
-    height: 100%;
-    padding: 100px 0 !important;
-    
-    padding: 50px 0;
+.dis {
+  width: 100%;
+  height: 100%;
+  padding: 100px 0 !important;
+
+  padding: 50px 0;
 }
-.dis h1{
-    text-align: center;
+.dis h1 {
+  text-align: center;
 }
-.dis p{
-    text-align: center;
+.dis p {
+  text-align: center;
 }
-.icons-udemy{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-    gap: 3.5rem;
-    opacity: .6;
+.icons-udemy {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  gap: 3.5rem;
+  opacity: 0.6;
 }
-.succes-story{
-    margin-bottom: 9rem;
+.succes-story {
+  margin-bottom: 9rem;
 }
-.card{
-    width: 100%;
-    height: 100%;
-    border-top: 4px solid var(--main-color);
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+.card {
+  width: 100%;
+  height: 100%;
+  border-top: 4px solid var(--main-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.card h4{
-    text-align: center;
-    padding: 12px 0;
-    font-weight: normal;
+.card h4 {
+  text-align: center;
+  padding: 12px 0;
+  font-weight: normal;
 }
-.card p{
-    text-align: center;
+.card p {
+  text-align: center;
 }
 .img-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -50px;
 }
-.img-card img{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+.img-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
-.footer-card{
-    background-color: #f0f0f0;
+.footer-card {
+  background-color: #f0f0f0;
 }

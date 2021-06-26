@@ -1,14 +1,21 @@
 import React, { Component } from "react";
 import "./css/Home.css";
+
 import {
   BsLaptop,
   BsFillBriefcaseFill,
   BsFillAlarmFill,
   BsAwardFill,
 } from "react-icons/bs";
-import {AiOutlineGoogle,SiUdacity,SiUdemy,FaMicrosoft,AiOutlineAmazon} from 'react-icons/all'
-import { Tab, Row, Nav, Col,} from "react-bootstrap";
-import img1 from './img/5.png';
+import {
+  AiOutlineGoogle,
+  SiUdacity,
+  SiUdemy,
+  FaMicrosoft,
+  AiOutlineAmazon,
+} from "react-icons/all";
+import { Tab, Row, Nav, Col } from "react-bootstrap";
+import img1 from "./img/5.png";
 class Home extends Component {
   render() {
     return (
@@ -43,16 +50,16 @@ class Home extends Component {
                     </p>
                   </div>
                   <div className="header-img ">
-                    <img src={img2} alt={img1} className='slideUp' />
+                    <img src={img2} alt={img1} className="slideUp" />
                   </div>
                 </div>
               </div>
             </Carousel.Item>
             <Carousel.Item className="background3 " interval={3000}>
-              <div className="ovelay" ></div>
+              <div className="ovelay"></div>
               <div className="container w-100 h-100">
                 <div className="header-img3">
-                  <img src={img3} alt={img3} className='slideUp' />
+                  <img src={img3} alt={img3} className="slideUp" />
                 </div>
               </div>
             </Carousel.Item>
@@ -62,10 +69,8 @@ class Home extends Component {
           <div className="container h-100">
             <div className="all-header">
               <h1>CourseCamp</h1>
-              <h4>Online Courses</h4>
-              <p>
-                Aim for the future. Pursue your passion. Keep learning. 
-              </p>
+              <h4>Home of Online Courses</h4>
+              <p>Aim for the future. Pursue your passion. Keep learning.</p>
             </div>
           </div>
         </div>
@@ -74,8 +79,7 @@ class Home extends Component {
         <section className="our-services">
           <div className="container">
             <div className="our-services-header pb-5 pt-2">
-              <p>Take
-                your first step into the web development world </p>
+              <p>Take your first step into the web development world </p>
             </div>
             <div className="all-service pt-5 pb-5">
               <div className="row ">
@@ -158,7 +162,7 @@ class Home extends Component {
         {/* ===================== */}
         <div className="dis pt-5 pb-5">
           <div className="container">
-            <h1 className='pb-4'>Learn From the Best</h1>
+            <h1 className="pb-4">Learn From the Best</h1>
             <p>
               Our online courses are built in partnership with technology
               leaders and are relevant to industry needs. Upon completing a
@@ -166,76 +170,91 @@ class Home extends Component {
               recognized by industry leaders.
             </p>
             <div className="icons-udemy">
-              <p> <SiUdemy /></p>
-              <p><SiUdacity /></p>
-              <p><AiOutlineGoogle /></p>
-              <p><FaMicrosoft /></p>
-              <p><AiOutlineAmazon /></p>
+              <p>
+                {" "}
+                <SiUdemy />
+              </p>
+              <p>
+                <SiUdacity />
+              </p>
+              <p>
+                <AiOutlineGoogle />
+              </p>
+              <p>
+                <FaMicrosoft />
+              </p>
+              <p>
+                <AiOutlineAmazon />
+              </p>
             </div>
           </div>
         </div>
 
         {/* ====================== */}
         {/* ========================= */}
-        <div className='succes-story '>
+        <div className="succes-story ">
           <div className="container">
             <div className="row">
               <div className="col">
                 <div className="card">
                   <div className="container">
                     <div className="img-card">
-                      <img src={img1} alt='img' />
-
+                      <img src={img1} alt="img" />
                     </div>
                     <h4>Ibrahem</h4>
-                    <p className='pb-5'>"One of the things that attracted me to course camp was a curriculum developed by people that worked for some of the biggest and most successful tech companies.”</p>
-                  
+                    <p className="pb-5">
+                      "One of the things that attracted me to course camp was a
+                      curriculum developed by people that worked for some of the
+                      biggest and most successful tech companies.”
+                    </p>
                   </div>
                   <div className="footer-card">
-                   <p className='pt-2'>NOW AT</p>
+                    <p className="pt-2">NOW AT</p>
                     <p>eskadenia | Data Administrator</p>
-                   </div>
+                  </div>
                 </div>
               </div>
               <div className="col">
-              <div className="card">
+                <div className="card">
                   <div className="container">
                     <div className="img-card">
-                      <img src={img1} alt='img' />
-
+                      <img src={img1} alt="img" />
                     </div>
                     <h4>Ibrahem</h4>
-                    <p className='pb-5'>"One of the things that attracted me to course camp was a curriculum developed by people that worked for some of the biggest and most successful tech companies.”</p>
-                    
+                    <p className="pb-5">
+                      "One of the things that attracted me to course camp was a
+                      curriculum developed by people that worked for some of the
+                      biggest and most successful tech companies.”
+                    </p>
                   </div>
                   <div className="footer-card">
-                   <p className='pt-2'>NOW AT</p>
+                    <p className="pt-2">NOW AT</p>
                     <p>eskadenia | Data Administrator</p>
-                   </div>
+                  </div>
                 </div>
               </div>
               <div className="col">
-              <div className="card">
+                <div className="card">
                   <div className="container">
                     <div className="img-card">
-                      <img src={img1} alt='img' />
-
+                      <img src={img1} alt="img" />
                     </div>
                     <h4>Ibrahem</h4>
-                    <p className='pb-5'>"One of the things that attracted me to course camp was a curriculum developed by people that worked for some of the biggest and most successful tech companies.”</p>
-                    
+                    <p className="pb-5">
+                      "One of the things that attracted me to course camp was a
+                      curriculum developed by people that worked for some of the
+                      biggest and most successful tech companies.”
+                    </p>
                   </div>
                   <div className="footer-card">
-                   <p className='pt-2'>NOW AT</p>
+                    <p className="pt-2">NOW AT</p>
                     <p>eskadenia | Data Administrator</p>
-                   </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
-
         {/* ========================= */}
       </div>
     );

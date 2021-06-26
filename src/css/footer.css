@@ -1,67 +1,69 @@
-.footer{
-    background: rgb(79,174,109);
-background: linear-gradient(0deg, rgba(79,174,109,1) 0%, rgba(255,255,255,1) 100%);
-width: 100%;
-height: 100%;
-padding: 20px 0;
+.footer {
+  background: rgb(79, 174, 109);
+  background: linear-gradient(
+    0deg,
+    rgba(79, 174, 109, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  width: 100%;
+  height: 100%;
+  padding: 20px 0;
 }
-.logo-footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.logo-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .logo-footer img {
-    margin-top: -50px;
-    width: 60px;
-    height: 60px;
-  
+  margin-top: -50px;
+  width: 60px;
+  height: 60px;
 }
-.footer h1{
-    text-align: left;
-    color: #232323;
-    text-shadow: var(--main-color) 0px 5px 15px;
-    font-weight: bolder;
-    padding:1rem 0;
+.footer h1 {
+  text-align: left;
+  color: #232323;
+  text-shadow: var(--main-color) 0px 5px 15px;
+  font-weight: bolder;
+  padding: 1rem 0;
 }
-.footer-name{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    text-align: center;
-    flex-direction: column;
-
+.footer-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  flex-direction: column;
 }
-.footer-name h2{
-    color: #232323;
-    text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
-    font-weight: bolder;
+.footer-name h2 {
+  color: #232323;
+  text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-weight: bolder;
 }
-.footer-name p{
-    opacity: .8;
+.footer-name p {
+  opacity: 0.8;
 }
-.all-social{
- width: 100%;
- display: flex;
- justify-content: center;
- align-items: center;
+.all-social {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
-.all-social p{
-    font-size: 3rem;
-    color: #fff;
-    text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
-    cursor: pointer;
-   
+.all-social p {
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: pointer;
 }
-.all-social p:hover{
-    transition: all .5s ease-in-out;
-    transform: scale(1.2);
+.all-social p:hover {
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.2);
 }
-.copyright svg{
-    font-size: 1.5rem;
-    color: #fff;
-    text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
+.copyright svg {
+  font-size: 1.5rem;
+  color: #fff;
+  text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.copyright{
-    opacity: .8;
+.copyright {
+  opacity: 0.8;
 }

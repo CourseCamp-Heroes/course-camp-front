@@ -1,81 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Josefin+Sans:ital,wght@0,200;0,400;0,500;0,600;0,700;1,200;1,400;1,600;1,700&family=Oswald:wght@200;300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;1,900&display=swap');
-body{
-   
-    font-family: 'Josefin Sans', sans-serif;
-    
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Josefin+Sans:ital,wght@0,200;0,400;0,500;0,600;0,700;1,200;1,400;1,600;1,700&family=Oswald:wght@200;300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;1,900&display=swap");
+body {
+  font-family: "Josefin Sans", sans-serif;
 }
-.header-btn{
-    width: 100px;
-    margin-left: .6rem;
-
-   
+.header-btn {
+  width: 100px;
+  margin-left: 0.6rem;
 }
-.header-btn:hover{
-    transition: all .3s ease-in-out;
-    background-color:#fff ;
-    color: var(--main-color);
-    
+.header-btn:hover {
+  transition: all 0.3s ease-in-out;
+  background-color: #fff;
+  color: var(--main-color);
 }
-.navbar-brand{
-    margin-right: 0px !important;
-    
-   
+.navbar-brand {
+  margin-right: 0px !important;
 }
-.navbar-dark .navbar-brand{
-    color: var(--main-color) !important;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 1.5rem;
+.navbar-dark .navbar-brand {
+  color: var(--main-color) !important;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.5rem;
 }
-.navbar-dark .navbar-brand:hover{
-    color: var(--main-color);
+.navbar-dark .navbar-brand:hover {
+  color: var(--main-color);
 }
 .nav-link {
-    padding: .5rem 1.5rem !important;
-    
+  padding: 0.5rem 1.5rem !important;
 }
 
-.bg-dark{
-    background-color: transparent !important;
+.bg-dark {
+  background-color: transparent !important;
 }
-.navbar-dark .navbar-nav .nav-link{
-    color: #000;
-    font-weight: bolder;
+.navbar-dark .navbar-nav .nav-link {
+  color: #000;
+  font-weight: bolder;
 }
-.navbar-dark .navbar-nav .nav-link:hover{
-    transition: all .3s ease-in-out;
-    color: var(--main-color);
-    font-weight: bolder;
-    transform: scale(1.2);
+.navbar-dark .navbar-nav .nav-link:hover {
+  transition: all 0.3s ease-in-out;
+  color: var(--main-color);
+  font-weight: bolder;
+  transform: scale(1.2);
 }
-.gray-scroll{
-    background-color: #212529!important;
-    transition: all .7s ease-in-out;
+.gray-scroll {
+  background-color: #212529 !important;
+  transition: all 0.7s ease-in-out;
 }
-.gray-scroll .navbar-nav .nav-link{
-    color: #fff;
+.gray-scroll .navbar-nav .nav-link {
+  color: #fff;
 }
-.gray-scroll .navbar-brand img{
-    height: 60px;
-    width:60px ;
+.gray-scroll .navbar-brand img {
+  height: 60px;
+  width: 60px;
 }
-.gray-scroll .navbar-brand{
-font-size: 1.2rem;
+.gray-scroll .navbar-brand {
+  font-size: 1.2rem;
 }
-.barnd-text{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: end;
-    line-height: 1;
-    height: 100%;
-    padding-top: 5px;
+.barnd-text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: end;
+  line-height: 1;
+  height: 100%;
+  padding-top: 5px;
 }
-.barnd-text p{
-    margin: 0 !important;
-    padding: 0 !important;
-    text-align: left;
+.barnd-text p {
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left;
 }

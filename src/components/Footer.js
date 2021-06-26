@@ -1,19 +1,13 @@
 import React, { Component } from "react";
 import "./../css/footer.css";
 import logo from "./../img/logo2.png";
-import {
-  BsFillHouseDoorFill,
-  BsPencilSquare,
-  BsStarFill,
-  BsFillHeartFill
-} from "react-icons/bs";
+import { BsFillHeartFill } from "react-icons/bs";
 import {
   AiFillFacebook,
   AiFillGithub,
   AiFillLinkedin,
-  AiFillTwitterSquare,
   AiFillGoogleSquare,
-  AiFillCopyrightCircle
+  AiFillCopyrightCircle,
 } from "react-icons/ai";
 class Footer extends Component {
   render() {
@@ -51,8 +45,15 @@ class Footer extends Component {
               </p>
             </div>
             <hr></hr>
-            <div className='row w-100 copyright'>
-              <p className='text-center'> <AiFillCopyrightCircle /> 2021</p><p className='text-center'> created with <BsFillHeartFill/> by CourseCamp-heroes</p>
+            <div className="row w-100 copyright">
+              <p className="text-center">
+                {" "}
+                <AiFillCopyrightCircle /> 2021
+              </p>
+              <p className="text-center">
+                {" "}
+                created with <BsFillHeartFill /> by CourseCamp-heroes
+              </p>
             </div>
           </div>
         </div>

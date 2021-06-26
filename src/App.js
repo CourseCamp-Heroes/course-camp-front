@@ -2,24 +2,24 @@ import React, { Component } from "react";
 import "./css/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { withAuth0 } from "@auth0/auth0-react";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
 import Home from "./Home";
 import About from "./About";
 import Courses from "./Courses";
 import Profile from "./Profile";
 import Blog from "./Blog";
 
-// import the components
-
 class App extends Component {
   render() {
+    const { user, isAuthenticated } = this.props.auth0;
+    console.log(user);
     return (
       <div>
         <Router>
-          <Header />
+          <Header isAuthenticated={isAuthenticated} user={user} />
           <Switch>
             <Route path="/" exact>
               <Home />
@@ -48,4 +48,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withAuth0(App);
