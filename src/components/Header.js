@@ -4,34 +4,28 @@ import { Navbar, Nav } from "react-bootstrap";
 import logo from "./../img/logo2.png";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
-import { withAuth0 } from "@auth0/auth0-react";
 import "./../css/header.css";
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      grayScroll: false,
-    };
-  }
-   grayScrollFunction = () => {
-    if(window.scrollY >100){
+  state = {
+    grayScroll: false,
+  };
+
+  grayScrollFunction = () => {
+    if (window.scrollY > 100) {
       this.setState({
         grayScroll: true,
       });
-    }else{
+    } else {
       this.setState({
-        grayScroll:false,
-      })
+        grayScroll: false,
+      });
     }
-   
   };
-  componentDidMount= ()=> {
-    window.addEventListener('scroll', this.grayScrollFunction );
-}
+  componentDidMount = () => {
+    window.addEventListener("scroll", this.grayScrollFunction);
+  };
   render() {
-   
-    const { isAuthenticated } = this.props.auth0;
     return (
       <Navbar
         collapseOnSelect
@@ -39,17 +33,21 @@ class Header extends React.Component {
         bg="dark"
         variant="dark"
         fixed="top"
-        className={this.state.grayScroll ?'gray-scroll':'bg-dark'}
+        className={this.state.grayScroll ? "gray-scroll" : "bg-dark"}
       >
         <div className="container">
           <Navbar.Brand href="#home" className="m-auto">
             <img
               alt=""
               src={logo}
-              width="100"
+              width="80"
               height="80"
               className="d-inline-block align-top"
             />
+            <div className="barnd-text">
+              <p>Course</p>
+              <p>Camp</p>
+            </div>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -61,7 +59,7 @@ class Header extends React.Component {
               <Nav.Link href="/about">About</Nav.Link>
             </Nav>
             <Nav className="mr-auto">
-              {!isAuthenticated ? <LoginButton /> : <LogoutButton />}
+              {!this.props.isAuthenticated ? <LoginButton /> : <LogoutButton />}
             </Nav>
           </Navbar.Collapse>
         </div>
@@ -70,4 +68,4 @@ class Header extends React.Component {
   }
 }
 
-export default withAuth0(Header);
+export default Header;
