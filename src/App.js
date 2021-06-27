@@ -15,7 +15,6 @@ import Blog from "./Blog";
 class App extends Component {
   render() {
     const { user, isAuthenticated } = this.props.auth0;
-    console.log(user);
     return (
       <div>
         <Router>
