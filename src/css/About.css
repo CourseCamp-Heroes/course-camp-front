@@ -98,7 +98,7 @@
 .commentCard {
   max-width: 80% !important;
   height: 170px !important;
-  overflow-y: scroll;
+  overflow-y: auto;
   margin: auto;
 }
 /* 
