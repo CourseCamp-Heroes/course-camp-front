@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./css/About.css";
 import Form from "react-bootstrap/Form";
-import{ Button ,Card}from "react-bootstrap/";
+import { Button, Card } from "react-bootstrap/";
 
 import imgNEmh from "./img/Nemh.jpg";
 import imgRawan from "./img/Rawan.jpg";
@@ -18,35 +18,31 @@ class About extends Component {
     usercomment: "",
   };
 
-  addData = async(event) => {
+  componentDidMount = () => {
+    const server = process.env.REACT_APP_SERVER;
+    const getcomment = `${server}/getComment`;
+
+    axios
+      .get(getcomment)
+      .then((response) => {
+        this.setState({ data: response.data });
+      })
+      .catch((err) => {});
+  };
+
+  addData = async (event) => {
     event.preventDefault();
 
-    const commentObj={
+    const commentObj = {
       userName: event.target.username.value,
       usercomment: event.target.comment.value,
     };
 
-   const server =process.env.REACT_APP_SERVER;
-   const getcomment=`${server}/addComment`;
-   const commentData= await axios.post(getcomment,commentObj);
-   console.log(commentData.data);
-
-
-
-    /*   let serverUrl = process.env.REACT_APP_SERVER;
-    let url = `${serverUrl}/feedback`;
-
-    axios.post(url, {
-      name: name,
-      comment: usercomment,
-    }); */
+    const server = process.env.REACT_APP_SERVER;
+    const postcomment = `${server}/addComment`;
+    const commentData = await axios.post(postcomment, commentObj);
+    this.setState({ data: commentData.data });
   };
-
-  // handleClose=()=>{
-  //   this.setState({
-  //     show:true,
-  //   })
-  // }
 
   render() {
     return (
@@ -183,17 +179,18 @@ class About extends Component {
         {/* form sec */}
         <div className="container pt-5 pb-5 mt-5 mb-5">
           <div className="row mb-5 row-cols-2">
-   
             <div className="col">
-              <Card className='commentCard'>
-                <Card.Header>{this.state.userName}</Card.Header>
-                <Card.Body>
-                  <Card.Text>
-                   {this.state.usercomment}
-                  </Card.Text>
-                  
-                </Card.Body>
-              </Card>
+              {this.state.data.map((item, i) => {
+                return (
+                  <Card className="commentCard" key={i}>
+                    <Card.Header>{item.name}</Card.Header>
+                    <p>{item.date}</p>
+                    <Card.Body>
+                      <Card.Text>{item.comment}</Card.Text>
+                    </Card.Body>
+                  </Card>
+                );
+              })}
             </div>
             <div className="col">
               <Form onSubmit={this.addData} className="about-form">
@@ -212,11 +209,7 @@ class About extends Component {
                   <Form.Label>Your feedback</Form.Label>
                   <Form.Control as="textarea" rows={3} name="comment" />
                 </Form.Group>
-                <Button
-                  variant="primary"
-                  type="submit"
-                  onClick={this.handleClose}
-                >
+                <Button variant="primary" type="submit">
                   Comment
                 </Button>
               </Form>
