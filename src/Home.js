@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./css/Home.css";
+import Blog from './Blog';
 
 import {
   BsLaptop,
