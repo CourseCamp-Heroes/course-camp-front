@@ -92,6 +92,18 @@
 .box p{
     opacity: .8;
 }
+.about-form{
+    width: 90%;
+    margin: auto;
+    border: 1px solid #ccc;
+    padding :20px 15px 
+}
+.commentCard{
+    max-width: 80% !important;
+    height:170px !important;
+    overflow-y: scroll;
+    margin: auto;
+}
 /* 
 
 .about-pic{
