@@ -11,11 +11,10 @@ import imgAhmad from "./img/Ahmad.jpg";
 import imgNadeen from "./img/Nadeen.jpg";
 import axios from "axios";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/all";
+
 class About extends Component {
   state = {
     data: [],
-    userName: "",
-    usercomment: "",
   };
 
   componentDidMount = () => {
@@ -52,7 +51,7 @@ class About extends Component {
             <h1 className="h1">Our Story</h1>
             <p>
               Hero Course Camp We gathered to build a Website to help our
-              community to to learn about programming free charges.
+              community to learn about programming free charges.
             </p>
           </div>
         </div>
@@ -133,7 +132,7 @@ class About extends Component {
                     <div className="social"></div>
                   </div>
                   <h4>Noor Azar</h4>
-                  <p>Softwate Development</p>
+                  <p>Computer Information System</p>
                 </div>
               </div>
               <div className="col">
