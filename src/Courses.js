@@ -5,6 +5,7 @@ import "./css/Courses.css";
 
 import axios from "axios";
 import CoursePageModal from "./components/CoursePageModal";
+import { IoMdTime, BsBarChart } from "react-icons/all";
 
 class Courses extends Component {
   state = {
@@ -461,8 +462,11 @@ class Courses extends Component {
                   <Card.Body>
                     <Card.Title className="pb-2">{course.title}</Card.Title>
                     <Card.Text>{course.subtitle}</Card.Text>
-                    <Card.Text>{course.level}</Card.Text>
-                    <Card.Text>{course.duration}</Card.Text>
+                    <Card.Text>
+                      <BsBarChart /> {course.level} <IoMdTime />{" "}
+                      {course.duration}
+                    </Card.Text>
+                    <Card.Text>{course.enrollCount} Enrolled</Card.Text>
                   </Card.Body>
                 </Card>
               );

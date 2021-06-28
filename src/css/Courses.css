@@ -25,7 +25,7 @@
   margin-bottom: 7em;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 30px;
   justify-content: center;
 }
 
@@ -94,11 +94,6 @@
 .modal-footer {
   height: 130px;
 }
-
-/* .courses-modal {
-  width: 100%;
-}
-/*  */
 
 .modal-dialog {
   max-width: 800px !important;

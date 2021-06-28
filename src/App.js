@@ -29,7 +29,7 @@ class App extends Component {
             </Route>
 
             <Route path="/profile">
-              <Profile />
+              <Profile user={user} />
             </Route>
 
             <Route path="/blog">

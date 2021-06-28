@@ -1,0 +1,43 @@
+.profile-card-container {
+  margin: 200px auto;
+  width: 80%;
+}
+
+.profile-card-button {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  font-weight: bold;
+}
+
+.profile-card-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.profile-card-img {
+  width: 230px;
+  height: 200px;
+  transition: transform 0.3s ease-in;
+}
+
+.profile-card-img:hover {
+  opacity: 0.7;
+  cursor: pointer;
+  transform: scale(0.95);
+}
+
+.profile-fav-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.profile-card-title {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.profile-course-card h4,
+.profile-course-card p {
+  margin-right: 70px;
+}
