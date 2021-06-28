@@ -10,7 +10,6 @@ import {
 
 class CoursePageModal extends Component {
   render() {
-    console.log(this.props.showEnrollbtn);
     return (
       <div>
         <Modal show={this.props.show} onHide={this.props.closeFunc}>

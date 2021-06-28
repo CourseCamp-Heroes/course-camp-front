@@ -42,18 +42,6 @@ class Courses extends Component {
       .catch((err) => {
         this.setState({ err: "There is and error" });
       });
-
-    if (this.props.isAuth) {
-      const url2 = `${serverUrl}/getusercourses?email=${this.props.user.email}`;
-      axios
-        .get(url2)
-        .then((response) => {
-          this.setState({ userCourses: response.data });
-        })
-        .catch((err) => {
-          this.setState({ err: "There is and error" });
-        });
-    }
   }
 
   // start of 3 select filteration functions
@@ -313,12 +301,28 @@ class Courses extends Component {
   // end of search input function
 
   // start of canvas functions
-  handleShow = (i) => {
+  handleShow = async (i) => {
     this.setState({ showModal: true, modalData: this.state.allCourses[i] });
+
+    if (this.props.isAuth) {
+      console.log("here");
+      const serverUrl = process.env.REACT_APP_SERVER;
+      const url2 = `${serverUrl}/getusercourses?email=${this.props.user.email}`;
+      await axios
+        .get(url2)
+        .then((response) => {
+          this.setState({ userCourses: response.data });
+        })
+        .catch((err) => {
+          this.setState({ err: "There is and error" });
+        });
+    }
 
     let arr = this.state.userCourses.filter((course) => {
       return course.title === this.state.allCourses[i].title;
     });
+
+    console.log(this.state.userCourses);
 
     this.setState({ showEnrollbtn: arr });
   };
@@ -333,6 +337,7 @@ class Courses extends Component {
     // send request to add users course database
     const serverUrl = process.env.REACT_APP_SERVER;
     const url = `${serverUrl}/addusercourse`;
+    const url2 = `${serverUrl}/updateCourseEnrollCount`;
 
     let dataObj = {
       email: this.props.user.email,
@@ -345,6 +350,17 @@ class Courses extends Component {
       .post(url, dataObj)
       .then((response) => {
         this.setState({ userCourses: response.data });
+
+        axios
+          .put(url2, { title: this.state.modalData.title })
+          .then((response) => {
+            this.setState({
+              allCourses: response.data,
+            });
+          })
+          .catch((err) => {
+            this.setState({ err: "There is and error" });
+          });
       })
       .catch((err) => {
         this.setState({ err: "There is and error" });
