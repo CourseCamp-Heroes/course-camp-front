@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Form, Card, Spinner } from "react-bootstrap";
-import Offcanvas from "react-bootstrap/Offcanvas";
+import { Spinner, Card, Form } from "react-bootstrap";
 import "./css/Courses.css";
 
 import axios from "axios";
+import CoursePageModal from "./components/CoursePageModal";
 
 class Courses extends Component {
   state = {
     allCourses: [],
+    userCourses: [],
     err: "",
     // for select 3 filterations:
     filterdCourses: [],
@@ -21,10 +22,12 @@ class Courses extends Component {
     // end of select 3 filterations
     searchValue: "",
     // offcanvas:
-    showCanvas: false,
+    showModal: false,
+    modalData: {},
+    showEnrollbtn: ["a"],
   };
 
-  componentDidMount = () => {
+  componentDidMount() {
     const serverUrl = process.env.REACT_APP_SERVER;
     const url = `${serverUrl}/allcourses`;
 
@@ -39,7 +42,19 @@ class Courses extends Component {
       .catch((err) => {
         this.setState({ err: "There is and error" });
       });
-  };
+
+    if (this.props.isAuth) {
+      const url2 = `${serverUrl}/getusercourses?email=${this.props.user.email}`;
+      axios
+        .get(url2)
+        .then((response) => {
+          this.setState({ userCourses: response.data });
+        })
+        .catch((err) => {
+          this.setState({ err: "There is and error" });
+        });
+    }
+  }
 
   // start of 3 select filteration functions
   levelFilter = (e) => {
@@ -298,12 +313,42 @@ class Courses extends Component {
   // end of search input function
 
   // start of canvas functions
-  handleShow = () => {
-    this.setState({ showCanvas: true });
+  handleShow = (i) => {
+    this.setState({ showModal: true, modalData: this.state.allCourses[i] });
+
+    let arr = this.state.userCourses.filter((course) => {
+      return course.title === this.state.allCourses[i].title;
+    });
+
+    this.setState({ showEnrollbtn: arr });
   };
 
   handleClose = () => {
-    this.setState({ showCanvas: false });
+    this.setState({ showModal: false });
+  };
+
+  handleEnroll = () => {
+    this.setState({ showModal: false });
+
+    // send request to add users course database
+    const serverUrl = process.env.REACT_APP_SERVER;
+    const url = `${serverUrl}/addusercourse`;
+
+    let dataObj = {
+      email: this.props.user.email,
+      title: this.state.modalData.title,
+      img: this.state.modalData.image,
+      subtitle: this.state.modalData.subtitle,
+    };
+
+    axios
+      .post(url, dataObj)
+      .then((response) => {
+        this.setState({ userCourses: response.data });
+      })
+      .catch((err) => {
+        this.setState({ err: "There is and error" });
+      });
   };
   // end of canvas functions
 
@@ -387,42 +432,35 @@ class Courses extends Component {
           ) : (
             this.state.filterdCourses.map((course, i) => {
               return (
-                <>
-                  <Card
-                    className="course-card"
-                    key={i}
-                    onClick={this.handleShow}
-                  >
-                    <Card.Img
-                      variant="top"
-                      src={course.image}
-                      style={{ height: 160 }}
-                    />
-                    <Card.Body>
-                      <Card.Title className="pb-2">{course.title}</Card.Title>
-                      <Card.Text>{course.subtitle}</Card.Text>
-                      <Card.Text>{course.level}</Card.Text>
-                      <Card.Text>{course.duration}</Card.Text>
-                    </Card.Body>
-                  </Card>
-                  // offcanvas
-                  <Offcanvas
-                    show={this.state.showCanvas}
-                    onHide={this.handleClose}
-                  >
-                    <Offcanvas.Header closeButton>
-                      <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-                    </Offcanvas.Header>
-                    <Offcanvas.Body>
-                      Some text as placeholder. In real life you can have the
-                      elements you have chosen. Like, text, images, lists, etc.
-                    </Offcanvas.Body>
-                  </Offcanvas>
-                </>
+                <Card
+                  className="course-card"
+                  key={i}
+                  onClick={() => this.handleShow(i)}
+                >
+                  <Card.Img
+                    variant="top"
+                    src={course.image}
+                    style={{ height: 160 }}
+                  />
+                  <Card.Body>
+                    <Card.Title className="pb-2">{course.title}</Card.Title>
+                    <Card.Text>{course.subtitle}</Card.Text>
+                    <Card.Text>{course.level}</Card.Text>
+                    <Card.Text>{course.duration}</Card.Text>
+                  </Card.Body>
+                </Card>
               );
             })
           )}
         </div>
+        {/* modal component */}
+        <CoursePageModal
+          show={this.state.showModal}
+          closeFunc={this.handleClose}
+          EnrollFunc={this.handleEnroll}
+          data={this.state.modalData}
+          showEnrollbtn={this.state.showEnrollbtn}
+        />
       </div>
     );
   }
