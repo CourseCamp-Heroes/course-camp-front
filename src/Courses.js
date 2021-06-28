@@ -1,12 +1,16 @@
 import React, { Component } from "react";
-import { Form, Card, Spinner } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Spinner, Card, Form } from "react-bootstrap";
 import "./css/Courses.css";
 
 import axios from "axios";
+import CoursePageModal from "./components/CoursePageModal";
+import { IoMdTime, BsBarChart } from "react-icons/all";
 
 class Courses extends Component {
   state = {
     allCourses: [],
+    userCourses: [],
     err: "",
     // for select 3 filterations:
     filterdCourses: [],
@@ -18,9 +22,13 @@ class Courses extends Component {
     skillsValue: "all",
     // end of select 3 filterations
     searchValue: "",
+    // offcanvas:
+    showModal: false,
+    modalData: {},
+    showEnrollbtn: ["a"],
   };
 
-  componentDidMount = () => {
+  componentDidMount() {
     const serverUrl = process.env.REACT_APP_SERVER;
     const url = `${serverUrl}/allcourses`;
 
@@ -35,7 +43,7 @@ class Courses extends Component {
       .catch((err) => {
         this.setState({ err: "There is and error" });
       });
-  };
+  }
 
   // start of 3 select filteration functions
   levelFilter = (e) => {
@@ -287,11 +295,79 @@ class Courses extends Component {
     });
     this.setState({ filterdCourses: newdata });
   };
-  // end of search input function
 
   searchChange = (e) => {
     this.setState({ searchValue: e.target.value });
   };
+  // end of search input function
+
+  // start of canvas functions
+  handleShow = async (i) => {
+    this.setState({ showModal: true, modalData: this.state.allCourses[i] });
+
+    if (this.props.isAuth) {
+      console.log("here");
+      const serverUrl = process.env.REACT_APP_SERVER;
+      const url2 = `${serverUrl}/getusercourses?email=${this.props.user.email}`;
+      await axios
+        .get(url2)
+        .then((response) => {
+          this.setState({ userCourses: response.data });
+        })
+        .catch((err) => {
+          this.setState({ err: "There is and error" });
+        });
+    }
+
+    let arr = this.state.userCourses.filter((course) => {
+      return course.title === this.state.allCourses[i].title;
+    });
+
+    console.log(this.state.userCourses);
+
+    this.setState({ showEnrollbtn: arr });
+  };
+
+  handleClose = () => {
+    this.setState({ showModal: false });
+  };
+
+  handleEnroll = () => {
+    this.setState({ showModal: false });
+
+    // send request to add users course database
+    const serverUrl = process.env.REACT_APP_SERVER;
+    const url = `${serverUrl}/addusercourse`;
+    const url2 = `${serverUrl}/updateCourseEnrollCount`;
+
+    let dataObj = {
+      email: this.props.user.email,
+      title: this.state.modalData.title,
+      img: this.state.modalData.image,
+      subtitle: this.state.modalData.subtitle,
+    };
+
+    axios
+      .post(url, dataObj)
+      .then((response) => {
+        this.setState({ userCourses: response.data });
+
+        axios
+          .put(url2, { title: this.state.modalData.title })
+          .then((response) => {
+            this.setState({
+              allCourses: response.data,
+            });
+          })
+          .catch((err) => {
+            this.setState({ err: "There is and error" });
+          });
+      })
+      .catch((err) => {
+        this.setState({ err: "There is and error" });
+      });
+  };
+  // end of canvas functions
 
   render() {
     return (
@@ -373,7 +449,11 @@ class Courses extends Component {
           ) : (
             this.state.filterdCourses.map((course, i) => {
               return (
-                <Card className="course-card" key={i}>
+                <Card
+                  className="course-card"
+                  key={i}
+                  onClick={() => this.handleShow(i)}
+                >
                   <Card.Img
                     variant="top"
                     src={course.image}
@@ -382,14 +462,26 @@ class Courses extends Component {
                   <Card.Body>
                     <Card.Title className="pb-2">{course.title}</Card.Title>
                     <Card.Text>{course.subtitle}</Card.Text>
-                    <Card.Text>{course.level}</Card.Text>
-                    <Card.Text>{course.duration}</Card.Text>
+                    <Card.Text>
+                      <BsBarChart /> {course.level} <IoMdTime />{" "}
+                      {course.duration}
+                    </Card.Text>
+                    <Card.Text>{course.enrollCount} Enrolled</Card.Text>
                   </Card.Body>
                 </Card>
               );
             })
           )}
         </div>
+        {/* modal component */}
+        <CoursePageModal
+          show={this.state.showModal}
+          closeFunc={this.handleClose}
+          EnrollFunc={this.handleEnroll}
+          data={this.state.modalData}
+          showEnrollbtn={this.state.showEnrollbtn}
+          isAuth={this.props.isAuth}
+        />
       </div>
     );
   }

@@ -25,11 +25,11 @@ class App extends Component {
             </Route>
 
             <Route path="/courses">
-              <Courses />
+              <Courses user={user} isAuth={isAuthenticated} />
             </Route>
 
             <Route path="/profile">
-              <Profile />
+              <Profile user={user} />
             </Route>
 
             <Route path="/blog">
