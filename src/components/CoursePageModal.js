@@ -7,12 +7,17 @@ import {
   BsBookHalf,
   IoPersonCircleOutline,
 } from "react-icons/all";
+import "../css/Courses.css";
 
 class CoursePageModal extends Component {
   render() {
     return (
       <div>
-        <Modal show={this.props.show} onHide={this.props.closeFunc}>
+        <Modal
+          show={this.props.show}
+          onHide={this.props.closeFunc}
+          className="courses-modal"
+        >
           <Modal.Header>
             <Modal.Title>
               <h2>{this.props.data.title}</h2>
@@ -73,13 +78,15 @@ class CoursePageModal extends Component {
             {this.props.showEnrollbtn.length > 0 ? (
               <p>You Enrolled</p>
             ) : (
-              <Button
-                variant="success"
-                onClick={this.props.EnrollFunc}
-                style={{ width: 90 }}
-              >
-                Enroll
-              </Button>
+              this.props.isAuth && (
+                <Button
+                  variant="success"
+                  onClick={this.props.EnrollFunc}
+                  style={{ width: 90 }}
+                >
+                  Enroll
+                </Button>
+              )
             )}
           </Modal.Footer>
         </Modal>

@@ -476,6 +476,7 @@ class Courses extends Component {
           EnrollFunc={this.handleEnroll}
           data={this.state.modalData}
           showEnrollbtn={this.state.showEnrollbtn}
+          isAuth={this.props.isAuth}
         />
       </div>
     );

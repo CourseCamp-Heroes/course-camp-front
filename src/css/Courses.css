@@ -94,3 +94,16 @@
 .modal-footer {
   height: 130px;
 }
+
+/* .courses-modal {
+  width: 100%;
+}
+/*  */
+
+.modal-dialog {
+  max-width: 800px !important;
+}
+
+.modal-content {
+  padding: 0 20px !important;
+}
