@@ -278,10 +278,27 @@
   margin-top: -50px;
 }
 .img-card img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
 }
 .footer-card {
   background-color: #f0f0f0;
+}
+
+.home-mostpoular-container {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.home-card-link {
+  color: #000;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.home-card-link:hover {
+  color: var(--main-color);
+  transform: scale(1.1);
 }

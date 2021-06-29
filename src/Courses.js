@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Spinner, Card, Form } from "react-bootstrap";
+import { Spinner, Card, Form, OverlayTrigger, Tooltip } from "react-bootstrap";
 import "./css/Courses.css";
 
 import axios from "axios";
 import CoursePageModal from "./components/CoursePageModal";
-import { IoMdTime, BsBarChart } from "react-icons/all";
+import {
+  IoMdTime,
+  BsBarChart,
+  BsCheck,
+  IoHeartCircleSharp,
+} from "react-icons/all";
 
 class Courses extends Component {
   state = {
     allCourses: [],
     userCourses: [],
+    userFavs: [],
     err: "",
     // for select 3 filterations:
     filterdCourses: [],
@@ -43,6 +49,24 @@ class Courses extends Component {
       .catch((err) => {
         this.setState({ err: "There is and error" });
       });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.user) {
+      if (prevState.userFavs === this.state.userFavs) {
+        const serverUrl = process.env.REACT_APP_SERVER;
+        const url2 = `${serverUrl}/getuserfavs?email=${this.props.user.email}`;
+
+        axios
+          .get(url2)
+          .then((response) => {
+            this.setState({ userFavs: response.data });
+          })
+          .catch((err) => {
+            this.setState({ err: err.message });
+          });
+      }
+    }
   }
 
   // start of 3 select filteration functions
@@ -323,8 +347,6 @@ class Courses extends Component {
       return course.title === this.state.allCourses[i].title;
     });
 
-    console.log(this.state.userCourses);
-
     this.setState({ showEnrollbtn: arr });
   };
 
@@ -368,6 +390,39 @@ class Courses extends Component {
       });
   };
   // end of canvas functions
+
+  addFav = (i) => {
+    let course = this.state.allCourses[i];
+    const serverUrl = process.env.REACT_APP_SERVER;
+    const url = `${serverUrl}/adduserfav`;
+    const url2 = `${serverUrl}/updateCourseReviewCount`;
+
+    let dataObj = {
+      email: this.props.user.email,
+      title: course.title,
+      img: course.image,
+    };
+
+    axios
+      .post(url, dataObj)
+      .then((response) => {
+        this.setState({ userFavs: response.data });
+
+        axios
+          .put(url2, { title: course.title })
+          .then((response) => {
+            this.setState({
+              allCourses: response.data,
+            });
+          })
+          .catch((err) => {
+            this.setState({ err: "There is and error" });
+          });
+      })
+      .catch((err) => {
+        this.setState({ err: "There is and error" });
+      });
+  };
 
   render() {
     return (
@@ -449,26 +504,51 @@ class Courses extends Component {
           ) : (
             this.state.filterdCourses.map((course, i) => {
               return (
-                <Card
-                  className="course-card"
-                  key={i}
-                  onClick={() => this.handleShow(i)}
+                <OverlayTrigger
+                  placement="top"
+                  overlay={
+                    <Tooltip id="button-tooltip-2">
+                      Click the image to see details
+                    </Tooltip>
+                  }
                 >
-                  <Card.Img
-                    variant="top"
-                    src={course.image}
-                    style={{ height: 160 }}
-                  />
-                  <Card.Body>
-                    <Card.Title className="pb-2">{course.title}</Card.Title>
-                    <Card.Text>{course.subtitle}</Card.Text>
-                    <Card.Text>
-                      <BsBarChart /> {course.level} <IoMdTime />{" "}
-                      {course.duration}
-                    </Card.Text>
-                    <Card.Text>{course.enrollCount} Enrolled</Card.Text>
-                  </Card.Body>
-                </Card>
+                  <Card className="course-card" key={i}>
+                    <Card.Img
+                      variant="top"
+                      src={course.image}
+                      style={{ height: 160 }}
+                      className="course-card-img"
+                      onClick={() => this.handleShow(i)}
+                    />
+
+                    <Card.Body>
+                      <Card.Title className="pb-2">{course.title}</Card.Title>
+                      <Card.Text>{course.subtitle}</Card.Text>
+                      <Card.Text>
+                        <BsBarChart /> {course.level} <IoMdTime />{" "}
+                        {course.duration}
+                      </Card.Text>
+                      <Card.Text className="course-enrolled-text">
+                        {course.enrollCount} Enrolled
+                      </Card.Text>
+
+                      {this.props.isAuth && this.state.userFavs ? (
+                        this.state.userFavs.filter((obj) => {
+                          return obj.title === course.title;
+                        }).length > 0 ? (
+                          <Card.Text className="course-fav-text">
+                            <BsCheck /> Added to favs
+                          </Card.Text>
+                        ) : (
+                          <IoHeartCircleSharp
+                            className="course-fav"
+                            onClick={() => this.addFav(i)}
+                          />
+                        )
+                      ) : null}
+                    </Card.Body>
+                  </Card>
+                </OverlayTrigger>
               );
             })
           )}
