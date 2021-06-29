@@ -35,7 +35,7 @@ class Home extends Component {
         this.setState({
           allCourses: response.data,
         });
-        // console.log(this.state.allCourses);
+        console.log(this.state.allCourses);
       })
       .catch((err) => {
         this.setState({ err: "There is and error" });
@@ -160,11 +160,11 @@ class Home extends Component {
                           {this.state.allCourses &&
                             this.state.allCourses
                               .sort((a, b) => {
-                                if (a.enrollCount - b.enrollCount) {
-                                  return 1;
-                                }
-                                if (a.enrollCount - b.enrollCount) {
+                                if (a.enrollCount > b.enrollCount) {
                                   return -1;
+                                }
+                                if (a.enrollCount < b.enrollCount) {
+                                  return 1;
                                 }
                               })
                               .slice(0, 4)
@@ -196,11 +196,11 @@ class Home extends Component {
                           {this.state.allCourses &&
                             this.state.allCourses
                               .sort((a, b) => {
-                                if (a.reviewCount - b.reviewCount) {
-                                  return 1;
-                                }
-                                if (a.reviewCount - b.reviewCount) {
+                                if (a.reviewCount > b.reviewCount) {
                                   return -1;
+                                }
+                                if (a.reviewCount < b.reviewCount) {
+                                  return 1;
                                 }
                               })
                               .slice(0, 4)
