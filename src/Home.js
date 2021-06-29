@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./css/Home.css";
-import Blog from './Blog';
-
+import Blog from "./Blog";
+import axios from "axios";
 import {
   BsLaptop,
   BsFillBriefcaseFill,
@@ -15,9 +15,33 @@ import {
   FaMicrosoft,
   AiOutlineAmazon,
 } from "react-icons/all";
-import { Tab, Row, Nav, Col } from "react-bootstrap";
-import img1 from "./img/5.png";
+import { Tab, Row, Nav, Col, Card } from "react-bootstrap";
+import img1 from "./img/p1.jpg";
+import img2 from "./img/p2.jpg";
+import img3 from "./img/p3.jpg";
+
 class Home extends Component {
+  state = {
+    allCourses: [],
+  };
+
+  componentDidMount() {
+    const serverUrl = process.env.REACT_APP_SERVER;
+    const url = `${serverUrl}/allcourses`;
+
+    axios
+      .get(url)
+      .then((response) => {
+        this.setState({
+          allCourses: response.data,
+        });
+        // console.log(this.state.allCourses);
+      })
+      .catch((err) => {
+        this.setState({ err: "There is and error" });
+      });
+  }
+
   render() {
     return (
       <div>
@@ -125,32 +149,83 @@ class Home extends Component {
                         <Nav.Link eventKey="first">Most Popular </Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
-                        <Nav.Link eventKey="second">Tap Reated </Nav.Link>
+                        <Nav.Link eventKey="second">Top Rated </Nav.Link>
                       </Nav.Item>
                     </Nav>
                   </Col>
                   <Col sm={9}>
                     <Tab.Content>
                       <Tab.Pane eventKey="first">
-                        {/* <Sonnet /> */}
-                        <p>
-                          rawan Lorem ipsum dolor sit amet consectetur,
-                          adipisicing elit. Nesciunt rerum enim labore fugiat,
-                          sint consequuntur magni necessitatibus unde. Odio
-                          distinctio fugiat nemo reprehenderit quos debitis
-                          molestias! Fugiat, impedit laudantium! Excepturi.
-                        </p>
-                        <p>
-                          rawan Lorem ipsum dolor sit amet consectetur,
-                          adipisicing elit. Nesciunt rerum enim labore fugiat,
-                          sint consequuntur magni necessitatibus unde. Odio
-                          distinctio fugiat nemo reprehenderit quos debitis
-                          molestias! Fugiat, impedit laudantium! Excepturi.
-                        </p>
+                        <div className="home-mostpoular-container">
+                          {this.state.allCourses &&
+                            this.state.allCourses
+                              .sort((a, b) => {
+                                if (a.enrollCount - b.enrollCount) {
+                                  return 1;
+                                }
+                                if (a.enrollCount - b.enrollCount) {
+                                  return -1;
+                                }
+                              })
+                              .slice(0, 4)
+                              .map((course) => {
+                                return (
+                                  <Card
+                                    style={{ width: "12rem", height: 260 }}
+                                    bg="success"
+                                    text="light"
+                                  >
+                                    <Card.Img
+                                      variant="top"
+                                      src={course.image}
+                                      style={{ height: 150 }}
+                                    />
+                                    <Card.Body>
+                                      <Card.Title>{course.title}</Card.Title>
+                                    </Card.Body>
+                                  </Card>
+                                );
+                              })}
+                          <a href="/courses" className="home-card-link">
+                            See More
+                          </a>
+                        </div>
                       </Tab.Pane>
                       <Tab.Pane eventKey="second">
-                        {/* <Sonnet /> */}
-                        <p>ibrahem</p>
+                        <div className="home-mostpoular-container">
+                          {this.state.allCourses &&
+                            this.state.allCourses
+                              .sort((a, b) => {
+                                if (a.reviewCount - b.reviewCount) {
+                                  return 1;
+                                }
+                                if (a.reviewCount - b.reviewCount) {
+                                  return -1;
+                                }
+                              })
+                              .slice(0, 4)
+                              .map((course) => {
+                                return (
+                                  <Card
+                                    style={{ width: "12rem", height: 260 }}
+                                    bg="success"
+                                    text="light"
+                                  >
+                                    <Card.Img
+                                      variant="top"
+                                      src={course.image}
+                                      style={{ height: 150 }}
+                                    />
+                                    <Card.Body>
+                                      <Card.Title>{course.title}</Card.Title>
+                                    </Card.Body>
+                                  </Card>
+                                );
+                              })}
+                          <a href="/courses" className="home-card-link">
+                            See More
+                          </a>
+                        </div>
                       </Tab.Pane>
                     </Tab.Content>
                   </Col>
@@ -202,7 +277,7 @@ class Home extends Component {
                     <div className="img-card">
                       <img src={img1} alt="img" />
                     </div>
-                    <h4>Ibrahem</h4>
+                    <h4>Ibrahim</h4>
                     <p className="pb-5">
                       "One of the things that attracted me to course camp was a
                       curriculum developed by people that worked for some of the
@@ -211,7 +286,7 @@ class Home extends Component {
                   </div>
                   <div className="footer-card">
                     <p className="pt-2">NOW AT</p>
-                    <p>eskadenia | Data Administrator</p>
+                    <p>Chain Reaction | Data Administrator</p>
                   </div>
                 </div>
               </div>
@@ -219,18 +294,19 @@ class Home extends Component {
                 <div className="card">
                   <div className="container">
                     <div className="img-card">
-                      <img src={img1} alt="img" />
+                      <img src={img2} alt="img" />
                     </div>
-                    <h4>Ibrahem</h4>
+                    <h4>Osama</h4>
                     <p className="pb-5">
-                      "One of the things that attracted me to course camp was a
-                      curriculum developed by people that worked for some of the
-                      biggest and most successful tech companies.”
+                      "The curriculum was aligned with what I wanted to study.
+                      The assignments are specific to the industry I’m in. I was
+                      able to develop new language translation tools for my
+                      company."
                     </p>
                   </div>
                   <div className="footer-card">
                     <p className="pt-2">NOW AT</p>
-                    <p>eskadenia | Data Administrator</p>
+                    <p>ESKADENIA | Front End Developer</p>
                   </div>
                 </div>
               </div>
@@ -238,18 +314,19 @@ class Home extends Component {
                 <div className="card">
                   <div className="container">
                     <div className="img-card">
-                      <img src={img1} alt="img" />
+                      <img src={img3} alt="img" />
                     </div>
-                    <h4>Ibrahem</h4>
+                    <h4>Ahmad</h4>
                     <p className="pb-5">
-                      "One of the things that attracted me to course camp was a
-                      curriculum developed by people that worked for some of the
-                      biggest and most successful tech companies.”
+                      "The curriculum was directly targeted toward applied
+                      techniques with high profile projects – real datasets with
+                      industry partners. It helped me achieve my career
+                      transition goal."
                     </p>
                   </div>
                   <div className="footer-card">
                     <p className="pt-2">NOW AT</p>
-                    <p>eskadenia | Data Administrator</p>
+                    <p>Zain | Back End Developer</p>
                   </div>
                 </div>
               </div>

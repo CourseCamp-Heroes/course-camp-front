@@ -13,21 +13,23 @@ class Profile extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.userCourses === this.state.userCourses) {
-      const serverUrl = process.env.REACT_APP_SERVER;
-      const url = `${serverUrl}/getAllUserData?email=${this.props.user.email}`;
-      axios
-        .get(url)
-        .then((response) => {
-          this.setState({
-            userCourses: response.data[0].courses,
-            userFav: response.data[0].favs,
+    if (this.props.user) {
+      if (prevState.userCourses === this.state.userCourses) {
+        const serverUrl = process.env.REACT_APP_SERVER;
+        const url = `${serverUrl}/getAllUserData?email=${this.props.user.email}`;
+        axios
+          .get(url)
+          .then((response) => {
+            this.setState({
+              userCourses: response.data[0].courses,
+              userFav: response.data[0].favs,
+            });
+            console.log("here");
+          })
+          .catch((err) => {
+            this.setState({ err: err.message });
           });
-          console.log("here");
-        })
-        .catch((err) => {
-          this.setState({ err: err.message });
-        });
+      }
     }
   }
 
