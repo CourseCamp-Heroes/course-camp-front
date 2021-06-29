@@ -407,17 +407,17 @@ class Courses extends Component {
       .post(url, dataObj)
       .then((response) => {
         this.setState({ userFavs: response.data });
+      })
+      .catch((err) => {
+        this.setState({ err: "There is and error" });
+      });
 
-        axios
-          .put(url2, { title: course.title })
-          .then((response) => {
-            this.setState({
-              allCourses: response.data,
-            });
-          })
-          .catch((err) => {
-            this.setState({ err: "There is and error" });
-          });
+    axios
+      .put(url2, { title: course.title })
+      .then((response) => {
+        this.setState({
+          allCourses: response.data,
+        });
       })
       .catch((err) => {
         this.setState({ err: "There is and error" });

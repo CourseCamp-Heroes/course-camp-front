@@ -2,7 +2,17 @@ import "./css/Profile.css";
 import axios from "axios";
 
 import React, { Component } from "react";
-import { Spinner, Card, OverlayTrigger, Tooltip,ListGroupItem,ListGroup, Button } from "react-bootstrap";
+import {
+  Spinner,
+  Card,
+  OverlayTrigger,
+  Tooltip,
+  ListGroupItem,
+  ListGroup,
+  Button,
+} from "react-bootstrap";
+
+import { IoHeartDislikeCircleOutline } from "react-icons/all";
 
 class Profile extends Component {
   state = {
@@ -34,49 +44,82 @@ class Profile extends Component {
   }
 
   Unenroll = (index) => {
-    const editEnroll = {index:index,userEmail:this.props.user.email};
-    console.log(editEnroll)
+    let editEnroll = { index: index, userEmail: this.props.user.email };
 
-    axios.put(`${process.env.REACT_APP_SERVER}/decreaseEnrollCount`,{title: this.state.userCourses[index].title}).then((response)=>{
-      console.log(response.data)
-
-      axios.delete(`${process.env.REACT_APP_SERVER}/deleteusercourse`, {params:editEnroll}).then(response => {
-        this.setState({
-          userCourses: response.data,
-        })
-        // console.log(response.data)
-       
-      }).catch((err)=>{
-        this.setState({ err: err.message });
+    axios
+      .put(`${process.env.REACT_APP_SERVER}/decreaseEnrollCount`, {
+        title: this.state.userCourses[index].title,
       })
-      
-    })
-  
-  }
-    
+      .then((response) => {
+        console.log(response.data);
+
+        axios
+          .delete(`${process.env.REACT_APP_SERVER}/deleteusercourse`, {
+            params: editEnroll,
+          })
+          .then((response) => {
+            this.setState({
+              userCourses: response.data,
+            });
+            // console.log(response.data)
+          })
+          .catch((err) => {
+            this.setState({ err: err.message });
+          });
+      });
+  };
+
+  unfav = (i) => {
+    let editEnroll = { index: i, userEmail: this.props.user.email };
+
+    axios
+      .put(`${process.env.REACT_APP_SERVER}/decreaseReviewCount`, {
+        title: this.state.userFav[i].title,
+      })
+      .then((response) => {});
+
+    axios
+      .delete(`${process.env.REACT_APP_SERVER}/deleteuserfav`, {
+        params: editEnroll,
+      })
+      .then((response) => {
+        this.setState({
+          userFav: response.data,
+        });
+      })
+      .catch((err) => {
+        this.setState({ err: err.message });
+      });
+  };
+
   render() {
     return (
       <div style={{ minHeight: 500 }}>
-        {this.props.user &&
-        <div>
-         <div className="profile-header">
-            <div className="container w-100 h-100">
+        {this.props.user && (
+          <div>
+            <div className="profile-header">
+              <div className="container w-100 h-100">
                 <div className="card profile-Card">
                   <div className="container footer-card">
                     <div className="img-card">
-                      <img src={this.props.user.picture} alt={this.props.user.name}  />
+                      <img
+                        src={this.props.user.picture}
+                        alt={this.props.user.name}
+                      />
                     </div>
                     <h3 className="text-center pt-4">{this.props.user.name}</h3>
                     <p className="pb-5">
-                    <strong>E-mail:</strong> {this.props.user.email}<br></br>
-                    <strong>Location:</strong> Amman, Jordan
+                      <strong>E-mail:</strong> {this.props.user.email}
+                      <br></br>
+                      <strong>Location:</strong> Amman, Jordan
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
           </div>
-        </div>
-        </div>}
-        
+        )}
+
         <div className="profile-card-container">
           <h3 className="mb-3">My Courses</h3>
           {this.state.userCourses ? (
@@ -112,7 +155,12 @@ class Profile extends Component {
                             {course.title}
                           </h4>
                           <p className="card-text">{course.subtitle}</p>
-                          <Button onClick={() => {this.Unenroll(i)}} className="btn btn-danger profile-card-button">
+                          <Button
+                            onClick={() => {
+                              this.Unenroll(i);
+                            }}
+                            className="btn btn-danger profile-card-button"
+                          >
                             Unenroll
                           </Button>
                         </div>
@@ -143,6 +191,10 @@ class Profile extends Component {
                     <Card.Body>
                       <Card.Title>{course.title}</Card.Title>
                     </Card.Body>
+                    <IoHeartDislikeCircleOutline
+                      className="course-unfav"
+                      onClick={() => this.unfav(i)}
+                    />
                   </Card>
                 );
               })
