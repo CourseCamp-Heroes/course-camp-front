@@ -142,7 +142,7 @@ class Profile extends Component {
                           alt="img"
                           onClick={() =>
                             window.open(
-                              "https://www.udacity.com/courses/front-end-web-developer-nanodegree--nd0011",
+                              "https://www.udacity.com/courses/all",
                               "_blank",
                               "noopener,noreferrer"
                             )
