@@ -1,19 +1,13 @@
 .profile-header {
   width: 100%;
-  height: 25vh;
-  background: rgb(25, 135, 84);
-  background: linear-gradient(
-    197deg,
-    rgba(25, 135, 84, 1) 0%,
-    rgba(255, 255, 255, 1) 100%
-  );
-  padding: 10px;
+  height: 35vh;
+  background: rgb(80, 79, 79);
+background: linear-gradient(180deg, #fff 0%, rgba(25,135,84,1) 0%, rgba(255,255,255,1) 100%);
+
+  padding: 5vh;
 }
 
-.profile-card-container {
-  margin: 200px auto;
-  width: 70%;
-}
+
 
 .profile-card-button {
   position: absolute;
@@ -90,4 +84,8 @@
   margin-bottom: 25vh;
   margin-left: 200px;
   font-size: 50px;
+}
+.h{
+  width: 100%;
+  height: 30vh ;
 }
