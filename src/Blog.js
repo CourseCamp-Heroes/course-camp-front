@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button, Spinner } from "react-bootstrap/";
+import { Card, Spinner } from "react-bootstrap/";
 import "./css/Blog.css";
 import axios from "axios";
 
@@ -41,11 +41,11 @@ class Blog extends Component {
           <div className="container">
             <div className="blog-header-img">
               <div className="overlay"></div>
-            <h1>Blog Page</h1>
-             <p>
-            
-             We know <strong>Programming</strong>. In fact, we wrote the blog on it.
-            </p> 
+              <h1>Blog Page</h1>
+              <p>
+                We know <strong>Programming</strong>. In fact, we wrote the blog
+                on it.
+              </p>
             </div>
           </div>
         </div>
@@ -61,25 +61,30 @@ class Blog extends Component {
                 return (
                   <div className="col mb-5">
                     <Card className="blogCard">
-                    <Card.Img variant="top"  src={item.image}  className="blogImg"/>
+                      <Card.Img
+                        variant="top"
+                        src={item.image}
+                        className="blogImg"
+                      />
                       <Card.Body>
                         <Card.Title className="blogTitle">
                           {item.title}
                         </Card.Title>
-                        <Card.Text className='blogText'>{item.description}</Card.Text>
-                        
-                        {/* <Button onClick={item.url} target="_blank" type="Read More" value="Read More" />{' '}*/}
+                        <Card.Text className="blogText">
+                          {item.description}
+                        </Card.Text>
 
+                        {/* <Button onClick={item.url} target="_blank" type="Read More" value="Read More" />{' '}*/}
                       </Card.Body>
                       <Card.Footer>
-                       <a
+                        <a
                           href={item.url}
                           target="_blank"
                           className="btn btn-success header-btn btn-blog"
                         >
                           Read More
                         </a>
-                        </Card.Footer>
+                      </Card.Footer>
                     </Card>
                   </div>
                 );

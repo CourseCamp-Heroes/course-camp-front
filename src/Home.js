@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./css/Home.css";
-import Blog from "./Blog";
 import axios from "axios";
 import {
   BsLaptop,

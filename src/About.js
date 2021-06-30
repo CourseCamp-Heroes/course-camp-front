@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./css/About.css";
-import Form from "react-bootstrap/Form";
-import { Button, Card } from "react-bootstrap/";
+import { Button } from "react-bootstrap/";
 
 import imgNEmh from "./img/Nemh.jpg";
 import imgRawan from "./img/Rawan.jpg";
@@ -9,8 +8,6 @@ import imgNoor from "./img/Noor.jpg";
 import imgIbrahim from "./img/Ibrahim.jpg";
 import imgAhmad from "./img/Ahmad.jpg";
 import imgNadeen from "./img/Nadeen.jpg";
-import headerImg from "./img/hero.png";
-import axios from "axios";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/all";
 
 class About extends Component {
@@ -50,22 +47,21 @@ class About extends Component {
         <div className="about-header">
           <div className="about-header-img">
             {/*  <img src={headerImg}/> */}
-           
-              <div className="container h-100">
-                <div className="row row-cols-2 h-100">
-                  <div className="col about-header-text">
-                    <h1>Start your journey</h1>
-                    <Button
-                      href="/Courses"
-                      variant="success"
-                      className="about-btn mt-4"
-                    >
-                      Enroll Now
-                    </Button>
-                  </div>
+
+            <div className="container h-100">
+              <div className="row row-cols-2 h-100">
+                <div className="col about-header-text">
+                  <h1>Start your journey</h1>
+                  <Button
+                    href="/Courses"
+                    variant="success"
+                    className="about-btn mt-4"
+                  >
+                    Enroll Now
+                  </Button>
                 </div>
               </div>
-            
+            </div>
           </div>
         </div>
 
