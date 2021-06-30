@@ -254,7 +254,7 @@ class Home extends Component {
         </div>
         {/* ================ */}
         {/* ===================== */}
-        <div className="dis pt-5 pb-5">
+        <div className="dis pt-5 pb-5 mt-5 mb-5">
           <div className="container">
             <h1 className="pb-4">Learn From the Best</h1>
             <p>

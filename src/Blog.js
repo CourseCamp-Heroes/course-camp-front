@@ -37,13 +37,16 @@ class Blog extends Component {
   render() {
     return (
       <div>
-        <div className="blog">
+        <div className="blog ">
           <div className="container">
+            <div className="blog-header-img">
+              <div className="overlay"></div>
             <h1>Blog Page</h1>
-            <p>
+            {/* <p>
               Hero Course Camp We gathered to build a Website to help our
               community to learn about programming free charges.
-            </p>
+            </p> */}
+            </div>
           </div>
         </div>
         {this.state.blogData.length === 0 ? (
@@ -58,26 +61,25 @@ class Blog extends Component {
                 return (
                   <div className="col mb-5">
                     <Card className="blogCard">
+                    <Card.Img variant="top"  src={item.image}  className="blogImg"/>
                       <Card.Body>
                         <Card.Title className="blogTitle">
                           {item.title}
                         </Card.Title>
-                        <Card.Text>{item.description}</Card.Text>
-                        <Card.Img
-                          className="blogImg"
-                          variant="top"
-                          src={item.image}
-                        />
+                        <Card.Text className='blogText'>{item.description}</Card.Text>
+                        
+                        {/* <Button onClick={item.url} target="_blank" type="Read More" value="Read More" />{' '}*/}
 
-                        <a
+                      </Card.Body>
+                      <Card.Footer>
+                       <a
                           href={item.url}
                           target="_blank"
-                          className="btn btn-success header-btn btn-blog mt-5"
+                          className="btn btn-success header-btn btn-blog"
                         >
                           Read More
                         </a>
-                        {/* <Button onClick={item.url} target="_blank" type="Read More" value="Read More" />{' '}*/}
-                      </Card.Body>
+                        </Card.Footer>
                     </Card>
                   </div>
                 );
