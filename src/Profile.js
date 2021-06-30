@@ -116,11 +116,16 @@ class Profile extends Component {
                   </p>
                 </div>
               </div>
+              
             </div>
           </div>
         </div>
+        <div className='h'>
 
-        <div className="profile-card-container">
+              </div>
+        <div className="row row-cols-2 w-100">
+          <div className="col-8 m-auto mt-0">
+        <div className="profile-card-container ">
           <h3 className="mb-3 mt-3">My Courses</h3>
           {this.state.userCourses ? (
             this.state.userCourses.map((course, i) => {
@@ -173,7 +178,10 @@ class Profile extends Component {
           ) : (
             <Spinner animation="border" variant="success" />
           )}
-          <h3 className="mb-3 mt-5">My Fav</h3>
+          </div>{/* profile-card-container  */}
+          </div>{/* col */}
+          <div className="col-3 m-auto mt-0">
+          <h3 className="mb-3 mt-3">My Fav</h3>
           <div className="profile-fav-container">
             {this.state.userCourses ? (
               this.state.userFav.map((course, i) => {
@@ -201,8 +209,10 @@ class Profile extends Component {
             ) : (
               <Spinner animation="border" variant="success" />
             )}
-          </div>
-        </div>
+            </div>{/*profile-fav-container  */}
+          </div>{/* col */}
+          </div>{/* row */}
+        
       </div>
     ) : (
       <p className="nologin-message">Login to see your info....</p>
