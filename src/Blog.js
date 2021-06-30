@@ -42,10 +42,10 @@ class Blog extends Component {
             <div className="blog-header-img">
               <div className="overlay"></div>
             <h1>Blog Page</h1>
-            {/* <p>
-              Hero Course Camp We gathered to build a Website to help our
-              community to learn about programming free charges.
-            </p> */}
+             <p>
+            
+             We know <strong>Programming</strong>. In fact, we wrote the blog on it.
+            </p> 
             </div>
           </div>
         </div>
