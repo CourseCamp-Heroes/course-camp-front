@@ -123,8 +123,8 @@ class Profile extends Component {
         <div className='h'>
 
               </div>
-        <div className="row row-cols-2 w-100">
-          <div className="col-8 m-auto mt-0">
+        <div className="row row-cols-2 w-100 mb-5 pb-5">
+          <div className="col-7 ms-auto mt-0">
         <div className="profile-card-container ">
           <h3 className="mb-3 mt-3">My Courses</h3>
           {this.state.userCourses ? (
@@ -139,7 +139,7 @@ class Profile extends Component {
                   }
                 >
                   <div className="card mb-4 profile-course-card" key={i}>
-                    <div className="row no-gutters">
+                    <div className="row no-gutters ">
                       <div className="col-auto">
                         <img
                           src={course.img}
@@ -154,13 +154,19 @@ class Profile extends Component {
                           }
                         />
                       </div>
+                    <div className="col pt-2 pb-2">
+                      <div className="body-profile-cours">
                       <div className="col">
                         <div className="card-block px-2">
                           <h4 className="card-title profile-card-title">
                             {course.title}
                           </h4>
                           <p className="card-text">{course.subtitle}</p>
-                          <Button
+                          
+                        </div>
+                      </div>
+                      <div className="col h-100 w-100 profile-btn">
+                      <Button
                             onClick={() => {
                               this.Unenroll(i);
                             }}
@@ -168,9 +174,11 @@ class Profile extends Component {
                           >
                             Unenroll
                           </Button>
-                        </div>
+                      </div>
                       </div>
                     </div>
+                    </div>
+                   
                   </div>
                 </OverlayTrigger>
               );
@@ -180,24 +188,24 @@ class Profile extends Component {
           )}
           </div>{/* profile-card-container  */}
           </div>{/* col */}
-          <div className="col-3 m-auto mt-0">
-          <h3 className="mb-3 mt-3">My Fav</h3>
+          <div className="col-4 ms-auto mt-0">
+          <h3 className="mb-3 mt-3">My Favorites</h3>
           <div className="profile-fav-container">
             {this.state.userCourses ? (
               this.state.userFav.map((course, i) => {
                 return (
                   <Card
-                    style={{ width: "18rem", minHeight: 320 }}
+                    style={{ width: "12rem", minHeight: 300 }}
                     bg="success"
                     text="light"
                   >
                     <Card.Img
                       variant="top"
                       src={course.img}
-                      style={{ height: 200 }}
+                      style={{ height: 150 }}
                     />
                     <Card.Body>
-                      <Card.Title>{course.title}</Card.Title>
+                      <Card.Title className='f-text'>{course.title}</Card.Title>
                     </Card.Body>
                     <IoHeartDislikeCircleOutline
                       className="course-unfav"

@@ -35,7 +35,7 @@ body {
 .navbar-dark .navbar-nav .nav-link {
   color: #000;
   font-weight: bolder;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 .navbar-dark .navbar-nav .nav-link:hover {
   transition: all 0.3s ease-in-out;
