@@ -12,7 +12,7 @@
 
 .profile-card-container {
   margin: 200px auto;
-  width: 80%;
+  width: 70%;
 }
 
 .profile-card-button {
@@ -83,4 +83,11 @@
 .course-unfav:hover {
   cursor: pointer;
   transform: scale(1.15);
+}
+
+.nologin-message {
+  margin-top: 200px;
+  margin-bottom: 25vh;
+  margin-left: 200px;
+  font-size: 50px;
 }

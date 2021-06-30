@@ -42,6 +42,24 @@ class Home extends Component {
       });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.user) {
+      if (prevState.allCourses === this.state.allCourses) {
+        const serverUrl = process.env.REACT_APP_SERVER;
+        const url = `${serverUrl}/addUser`;
+
+        axios
+          .post(url, { email: this.props.user.email })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
+      }
+    }
+  }
+
   render() {
     return (
       <div>

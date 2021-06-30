@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Spinner, Card, Form, OverlayTrigger, Tooltip } from "react-bootstrap";
+import {
+  Spinner,
+  Card,
+  Form,
+  OverlayTrigger,
+  Tooltip,
+  Modal,
+} from "react-bootstrap";
 import "./css/Courses.css";
 
 import axios from "axios";
@@ -32,6 +39,7 @@ class Courses extends Component {
     showModal: false,
     modalData: {},
     showEnrollbtn: ["a"],
+    showAlert: false,
   };
 
   componentDidMount() {
@@ -388,6 +396,7 @@ class Courses extends Component {
       .catch((err) => {
         this.setState({ err: "There is and error" });
       });
+    this.setState({ showAlert: true });
   };
   // end of canvas functions
 
@@ -422,6 +431,12 @@ class Courses extends Component {
       .catch((err) => {
         this.setState({ err: "There is and error" });
       });
+
+    this.setState({ showAlert: true });
+  };
+
+  closeAlert = () => {
+    this.setState({ showAlert: false });
   };
 
   render() {
@@ -562,6 +577,21 @@ class Courses extends Component {
           showEnrollbtn={this.state.showEnrollbtn}
           isAuth={this.props.isAuth}
         />
+        {/* //alert modal */}
+        <Modal
+          show={this.state.showAlert}
+          onHide={this.closeAlert}
+          className="course-alert"
+        >
+          <Modal.Header>
+            <Modal.Title>Check out your profile page</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="text-center">
+            <button className="btn btn-success px-4" onClick={this.closeAlert}>
+              Ok
+            </button>
+          </Modal.Body>
+        </Modal>
       </div>
     );
   }
