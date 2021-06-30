@@ -21,7 +21,7 @@ class App extends Component {
           <Header isAuthenticated={isAuthenticated} user={user} />
           <Switch>
             <Route path="/" exact>
-              <Home />
+              <Home user={user} />
             </Route>
 
             <Route path="/courses">

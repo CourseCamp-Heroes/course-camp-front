@@ -43,33 +43,8 @@ class Profile extends Component {
     }
   }
 
-  Unenroll = (index) => {
-    let editEnroll = { index: index, userEmail: this.props.user.email };
-
-    axios
-      .put(`${process.env.REACT_APP_SERVER}/decreaseEnrollCount`, {
-        title: this.state.userCourses[index].title,
-      })
-      .then((response) => {
-        console.log(response.data);
-
-        axios
-          .delete(`${process.env.REACT_APP_SERVER}/deleteusercourse`, {
-            params: editEnroll,
-          })
-          .then((response) => {
-            this.setState({
-              userCourses: response.data,
-            });
-            // console.log(response.data)
-          })
-          .catch((err) => {
-            this.setState({ err: err.message });
-          });
-      });
-  };
-
   unfav = (i) => {
+    console.log(this.props.user);
     let editEnroll = { index: i, userEmail: this.props.user.email };
 
     axios
@@ -86,6 +61,33 @@ class Profile extends Component {
         this.setState({
           userFav: response.data,
         });
+        window.location.reload();
+      })
+      .catch((err) => {
+        this.setState({ err: err.message });
+      });
+  };
+
+  Unenroll = (index) => {
+    let editEnroll = { index: index, userEmail: this.props.user.email };
+
+    axios
+      .put(`${process.env.REACT_APP_SERVER}/decreaseEnrollCount`, {
+        title: this.state.userCourses[index].title,
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+
+    axios
+      .delete(`${process.env.REACT_APP_SERVER}/deleteusercourse`, {
+        params: editEnroll,
+      })
+      .then((response) => {
+        this.setState({
+          userCourses: response.data,
+        });
+        window.location.reload();
       })
       .catch((err) => {
         this.setState({ err: err.message });
@@ -93,35 +95,33 @@ class Profile extends Component {
   };
 
   render() {
-    return (
+    return this.props.user ? (
       <div style={{ minHeight: 500 }}>
-        {this.props.user && (
-          <div>
-            <div className="profile-header">
-              <div className="container w-100 h-100">
-                <div className="card profile-Card">
-                  <div className="container footer-card">
-                    <div className="img-card">
-                      <img
-                        src={this.props.user.picture}
-                        alt={this.props.user.name}
-                      />
-                    </div>
-                    <h3 className="text-center pt-4">{this.props.user.name}</h3>
-                    <p className="pb-5">
-                      <strong>E-mail:</strong> {this.props.user.email}
-                      <br></br>
-                      <strong>Location:</strong> Amman, Jordan
-                    </p>
+        <div>
+          <div className="profile-header">
+            <div className="container w-100 h-100">
+              <div className="card profile-Card">
+                <div className="container footer-card">
+                  <div className="img-card">
+                    <img
+                      src={this.props.user.picture}
+                      alt={this.props.user.name}
+                    />
                   </div>
+                  <h3 className="text-center pt-4">{this.props.user.name}</h3>
+                  <p className="pb-5">
+                    <strong>E-mail:</strong> {this.props.user.email}
+                    <br></br>
+                    <strong>Location:</strong> Amman, Jordan
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-        )}
+        </div>
 
         <div className="profile-card-container">
-          <h3 className="mb-3">My Courses</h3>
+          <h3 className="mb-3 mt-3">My Courses</h3>
           {this.state.userCourses ? (
             this.state.userCourses.map((course, i) => {
               return (
@@ -204,6 +204,8 @@ class Profile extends Component {
           </div>
         </div>
       </div>
+    ) : (
+      <p className="nologin-message">Login to see your info....</p>
     );
   }
 }

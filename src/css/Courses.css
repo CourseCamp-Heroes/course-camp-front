@@ -133,3 +133,8 @@
   cursor: pointer;
   transform: scale(1.15);
 }
+
+.course-alert {
+  width: 30em;
+  margin: 5% 37%;
+}
