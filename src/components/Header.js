@@ -54,25 +54,35 @@ class Header extends React.Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="m-auto">
-              <Link to="/" style={{ textDecoration: "none" }}>
-                <Nav.Link href="/">Home</Nav.Link>
-              </Link>
+              <Nav.Link href="/">
+                <Link to="/" className="home-nav-link">
+                  Home
+                </Link>
+              </Nav.Link>
 
-              <Link to="/courses" style={{ textDecoration: "none" }}>
-                <Nav.Link href="/courses">Courses</Nav.Link>
-              </Link>
+              <Nav.Link href="/courses">
+                <Link to="/courses" className="home-nav-link">
+                  Courses
+                </Link>
+              </Nav.Link>
 
-              <Link to="/blog" style={{ textDecoration: "none" }}>
-                <Nav.Link href="/blog">Blog</Nav.Link>
-              </Link>
+              <Nav.Link href="/blog">
+                <Link to="/blog" className="home-nav-link">
+                  Blog
+                </Link>
+              </Nav.Link>
 
-              <Link to="/profile" style={{ textDecoration: "none" }}>
-                <Nav.Link href="/profile">Profile</Nav.Link>
-              </Link>
+              <Nav.Link href="/profile">
+                <Link to="/profile" className="home-nav-link">
+                  Profile
+                </Link>
+              </Nav.Link>
 
-              <Link to="/about" style={{ textDecoration: "none" }}>
-                <Nav.Link href="/about">About Us</Nav.Link>
-              </Link>
+              <Nav.Link href="/about">
+                <Link to="/about" className="home-nav-link">
+                  About Us
+                </Link>
+              </Nav.Link>
             </Nav>
             <Nav className="mr-auto">
               {!this.props.isAuthenticated ? <LoginButton /> : <LogoutButton />}

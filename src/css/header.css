@@ -2,6 +2,7 @@
 body {
   font-family: "Josefin Sans", sans-serif;
 }
+
 .header-btn {
   width: 100px;
   margin-left: 0.6rem;
@@ -47,7 +48,7 @@ body {
   background-color: #212529 !important;
   transition: all 0.7s ease-in-out;
 }
-.gray-scroll .navbar-nav .nav-link {
+.gray-scroll .navbar-nav .nav-link .home-nav-link {
   color: #fff;
 }
 .gray-scroll .navbar-brand img {
@@ -71,4 +72,12 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   text-align: left;
+}
+.home-nav-link {
+  text-decoration: none;
+  color: black;
+}
+
+.home-nav-link:hover {
+  color: var(--main-color);
 }
