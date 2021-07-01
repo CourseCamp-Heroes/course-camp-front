@@ -33,12 +33,21 @@ body {
 .bg-dark {
   background-color: transparent !important;
 }
+
 .navbar-dark .navbar-nav .nav-link {
   color: #000;
   font-weight: bolder;
   font-size: 1.3rem;
 }
+
 .navbar-dark .navbar-nav .nav-link:hover {
+  transition: all 0.3s ease-in-out;
+  color: var(--main-color);
+  font-weight: bolder;
+  transform: scale(1.2);
+}
+
+.navbar-dark .navbar-nav .nav-link .home-nav-link:hover {
   transition: all 0.3s ease-in-out;
   color: var(--main-color);
   font-weight: bolder;
@@ -51,6 +60,11 @@ body {
 .gray-scroll .navbar-nav .nav-link .home-nav-link {
   color: #fff;
 }
+
+.gray-scroll .navbar-nav .home-nav-link {
+  color: #fff;
+}
+
 .gray-scroll .navbar-brand img {
   height: 60px;
   width: 60px;

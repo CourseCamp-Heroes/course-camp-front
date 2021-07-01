@@ -7,6 +7,7 @@ import LogoutButton from "./LogoutButton";
 import "./../css/header.css";
 
 import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 
 class Header extends React.Component {
   state = {
@@ -72,10 +73,8 @@ class Header extends React.Component {
                 </Link>
               </Nav.Link>
 
-              <Nav.Link href="/profile">
-                <Link to="/profile" className="home-nav-link">
-                  Profile
-                </Link>
+              <Nav.Link href="/profile" className="home-nav-link">
+                Profile
               </Nav.Link>
 
               <Nav.Link href="/about">
