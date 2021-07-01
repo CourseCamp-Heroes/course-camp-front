@@ -6,6 +6,8 @@ import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 import "./../css/header.css";
 
+import { Link } from "react-router-dom";
+
 class Header extends React.Component {
   state = {
     grayScroll: false,
@@ -52,11 +54,25 @@ class Header extends React.Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="m-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/courses">Courses</Nav.Link>
-              <Nav.Link href="/blog">Blog</Nav.Link>
-              <Nav.Link href="/profile">Profile</Nav.Link>
-              <Nav.Link href="/about">About Us</Nav.Link>
+              <Link to="/" style={{ textDecoration: "none" }}>
+                <Nav.Link href="/">Home</Nav.Link>
+              </Link>
+
+              <Link to="/courses" style={{ textDecoration: "none" }}>
+                <Nav.Link href="/courses">Courses</Nav.Link>
+              </Link>
+
+              <Link to="/blog" style={{ textDecoration: "none" }}>
+                <Nav.Link href="/blog">Blog</Nav.Link>
+              </Link>
+
+              <Link to="/profile" style={{ textDecoration: "none" }}>
+                <Nav.Link href="/profile">Profile</Nav.Link>
+              </Link>
+
+              <Link to="/about" style={{ textDecoration: "none" }}>
+                <Nav.Link href="/about">About Us</Nav.Link>
+              </Link>
             </Nav>
             <Nav className="mr-auto">
               {!this.props.isAuthenticated ? <LoginButton /> : <LogoutButton />}
