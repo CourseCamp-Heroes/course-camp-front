@@ -2,6 +2,9 @@
 
 This project repository for a website called **CourseCamp** which offers online courses in web development field, created by a team of developers called **CourseCamp-heroes**.
 
+- site link:
+  [netlify link](https://course-camp.netlify.app/)
+
 # Contributers:
 
 A team called **CourseCamp-heroes** worked together to make this website come true:
